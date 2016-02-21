@@ -25,6 +25,8 @@ add_action('admin_menu', 'oswpa_add_pages');
 
     function oswpa_add_pages() {
 
+
+
 add_menu_page(
         'OneSignal Push',
         'OneSignal Push',
@@ -35,11 +37,22 @@ add_menu_page(
     );
 add_submenu_page(
         'appalliance-wp-kit',
-        'Send Message',
-        'Send Message',
+        'Dashboard',
+        'Dashboard',
         'manage_options',
         'appalliance-wp-kit'
     );
+
+add_submenu_page(
+        'appalliance-wp-kit',
+        'One time notification',
+        'One time notification',
+        'manage_options',
+        'appalliance-onetime-page',
+        'oswpa_onetime_page'
+    );
+
+
 add_submenu_page(
         'appalliance-wp-kit',
         'Config',
@@ -55,7 +68,7 @@ add_submenu_page(
     add_action( 'admin_init', 'onesignal_config_settings' );
 }
 
-    function onesignal_config_settings() {
+function onesignal_config_settings() {
 
         register_setting( 'oswpa-config-fields', 'oswpa_onesignal_api' );
         register_setting( 'oswpa-config-fields', 'oswpa_onesignal_id' );
@@ -69,8 +82,15 @@ function oswpa_add_media_admin_styles() {
 
 add_action('admin_print_styles', 'oswpa_add_media_admin_styles');
 
+add_action( 'admin_head', 'welcome_screen_remove_menus', 9999 );
+
+function welcome_screen_remove_menus() {
+    remove_submenu_page( 'appalliance-wp-kit', 'appalliance-onetime-page' );
+}
+
 
 include('oswpa_config.php');
 include('oswpa_dashboard.php');
+include('oswpa_onetime.php');
 
 ?>

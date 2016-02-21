@@ -19,7 +19,7 @@
             <?php settings_fields( 'oswpa-config-fields' ); ?>
             <?php //do_settings_sections( 'rwp-custom-howdy-group' ); ?>
             <table class="form-table">
-                <tr><th colspan="2"><h3 style="text-decoration: underline;">Onesignal push notifcations:</h3></th></tr>
+                <tr><th style="padding: 0px 10px 0px 0;" colspan="2"><h3 style="text-decoration: underline;">Onesignal push notifcations:</h3></th></tr>
                 <tr valign="top">
                 <th scope="row">Onesignal App ID:</th>
                 <td><input type="text" name="oswpa_onesignal_id" value="<?php echo esc_attr( get_option('oswpa_onesignal_id') ); ?>" maxlength="100" size="60" /></td>
