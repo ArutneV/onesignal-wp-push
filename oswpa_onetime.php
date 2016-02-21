@@ -3,11 +3,6 @@ function oswpa_onetime_page() {
     if ( !current_user_can( 'manage_options' ) )  {
         wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
     }
-    ?>
-
-<?php
-
-
 
   function sendMessage() {
 
@@ -78,8 +73,7 @@ $apiKey = esc_attr( get_option('oswpa_onesignal_api') );
    //print("\n")
 
 ?>
-
-  <div class="wrap">
+<div class="wrap">
 
                   <div style="float:right;margin-left:10px;text-align:right;">
               Plugins by <a href="http://appalliance.co.za/" target="_blank">AppAlliance</a><br>

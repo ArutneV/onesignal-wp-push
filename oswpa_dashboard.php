@@ -47,7 +47,5 @@ function oswpa_dashboard_page() {
 
 </ol>
 
-
   </div>
-
     <?php } ?>
