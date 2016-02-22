@@ -14,7 +14,13 @@ function oswpa_initial_install() {
     add_option( 'oswpa_onesignal_api', 'Your API key here' );
     add_option( 'oswpa_onesignal_id', 'Your app ID here' );
 }
-register_activation_hook( __FILE__, 'rwp_initial_install' );
+register_activation_hook( __FILE__, 'oswpa_initial_install' );
+function onesignal_config_settings() {
+
+        register_setting( 'oswpa-config-fields', 'oswpa_onesignal_api' );
+        register_setting( 'oswpa-config-fields', 'oswpa_onesignal_id' );
+
+    }
 add_action('admin_menu', 'oswpa_add_pages');
 function oswpa_add_pages() {
 
@@ -60,17 +66,11 @@ add_submenu_page(
 
     add_action( 'admin_init', 'onesignal_config_settings' );
 }
-function onesignal_config_settings() {
-
-        register_setting( 'oswpa-config-fields', 'oswpa_onesignal_api' );
-        register_setting( 'oswpa-config-fields', 'oswpa_onesignal_id' );
-
-    }
+add_action('admin_print_styles', 'oswpa_add_media_admin_styles');
 function oswpa_add_media_admin_styles() {
     wp_enqueue_style('thickbox');
     wp_enqueue_style( 'oswpa_styles', plugins_url('oswpa_styles.css', __FILE__) );
     }
-add_action('admin_print_styles', 'oswpa_add_media_admin_styles');
 add_action( 'admin_head', 'welcome_screen_remove_menus', 9999 );
 function welcome_screen_remove_menus() {
     remove_submenu_page( 'appalliance-wp-kit', 'appalliance-onetime-page' );
